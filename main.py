@@ -68,6 +68,8 @@ if shifr == 2:
     if type == 2:
         for i in range((len(text_list)//(len(key_list)*number)+1)*(len(key_list)*number)-len(text_list)):
             text_list.append('\0')
+        for i in range(len(text_list)):
+            result_list.append('\0')
         for i in range(0, len(text_list), len(key_list)*number):
             for j in range(len(key_list)):
                 for g in range(number):
@@ -80,9 +82,11 @@ if shifr == 2:
         text_list = text.split()
         while len(text_list) % len(key_list) != 0:
             text_list.append('\0')
+        for i in range(len(text_list)):
+            result_list.append('\0')
         for i in range(0, len(text_list), len(key_list)):
             for j in range(len(key_list)):
-                result_list.append(text_list[i+key_list[j]])
+                result_list.insert(key_list[j]+i,text_list[j+i])
         result = ' '.join(result_list)
         result = result.replace("\0", "")
         print('Расшифрованный текст: \n')
